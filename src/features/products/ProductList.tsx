@@ -15,6 +15,7 @@ import {
   FaStarHalfAlt,
   FaRegStar
 } from "react-icons/fa";
+import AddCart from "./AddCart";
 
 export function ProductList() {
   const [products, setProducts] = useState([]);
@@ -28,6 +29,7 @@ export function ProductList() {
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("");
   const [wishlist, setWishlist] = useState<Set<string>>(new Set());
+  const [add,setDD]=useState(false);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -105,6 +107,11 @@ export function ProductList() {
       }
     }
   };
+
+  const handlerAdd=(product:any)=>{
+    console.log(product.name,product.description,product.price);
+
+  }
 
   return (
     <section className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
@@ -327,6 +334,7 @@ export function ProductList() {
                         View Details
                       </Link>
                       <button
+                        onClick={()=>handlerAdd(product)}
                         disabled={!product.inStock}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                           product.inStock
@@ -340,7 +348,9 @@ export function ProductList() {
                     </div>
                   </div>
                 </motion.div>
+                
               ))}
+              
             </motion.div>
           )}
         </AnimatePresence>
@@ -383,8 +393,12 @@ export function ProductList() {
               Next
               <FiArrowRight />
             </button>
+
+            
           </motion.nav>
         )}
+
+        
       </div>
     </section>
   );

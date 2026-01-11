@@ -1,6 +1,6 @@
 import { http, HttpResponse, delay } from 'msw'
 import data from './data/products.json'
-import type { Product, ListResponse } from '../types' // Adjusted path to match the correct location
+import type { Product, ListResponse } from '../types' 
 
 let products: Product[] = JSON.parse(JSON.stringify(data))
 
